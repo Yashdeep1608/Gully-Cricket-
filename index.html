@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gully Captain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="card hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Mohalle ki match utility</p>
+          <h1>🏏 Gully Captain</h1>
+          <p class="subtitle">Toss pehle. Teams set. Faltu ka lafda band.</p>
+          <p class="hero-note">
+            Cricket ho, football ho, ya shuttle ka full on scene. Yahan halka bakchodi allowed hai,
+            par fairness bilkul seedha chalega.
+          </p>
+          <div class="hero-badges" aria-label="App highlights">
+            <span>Fresh har reload</span>
+            <span>No login ka jhanjhat</span>
+            <span>GitHub Pages ready</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <p class="panel-kicker">Aaj ka scene</p>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span>Sport</span>
+              <strong id="heroSport">Cricket</strong>
+            </div>
+            <div class="stat-card">
+              <span>Lineup</span>
+              <strong id="heroPlayers">0 bande</strong>
+            </div>
+            <div class="stat-card">
+              <span>Flow</span>
+              <strong id="heroFlow">Lineup pending</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <div id="flowTrack" class="flow-track" aria-label="Match flow"></div>
+
+    <p id="notice" class="notice is-hidden" role="status" aria-live="polite"></p>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 1</p>
+          <h2>Kya khelna hai?</h2>
+        </div>
+      </div>
+      <p class="section-copy">Sport pick kar. Uske hisaab se toss decision bhi badlega.</p>
+      <div id="sportGrid" class="sports-grid" aria-label="Sport selection"></div>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 2</p>
+          <h2>Kaun kaun utrega?</h2>
+        </div>
+        <p id="playerCount" class="count-pill">0 bande</p>
+      </div>
+
+      <form id="playerForm" class="player-form">
+        <label class="sr-only" for="playerInput">Player Name</label>
+        <input
+          id="playerInput"
+          name="player"
+          type="text"
+          maxlength="24"
+          placeholder="Player ka naam daal"
+          autocomplete="off"
+        >
+        <button type="submit" class="btn btn-primary">Add banda</button>
+      </form>
+
+      <p class="section-copy">Naam daal, chip banega, aur refresh hote hi sab hawa ho jayega.</p>
+      <div id="playerChips" class="chip-list" aria-live="polite"></div>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 3</p>
+          <h2>Kitni side banegi?</h2>
+        </div>
+      </div>
+      <p class="section-copy">2, 3 ya 4 teams. Jitna crowd, utni planning.</p>
+      <div id="teamCountOptions" class="option-grid" aria-label="Number of teams"></div>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 4</p>
+          <h2>Pehle Toss</h2>
+        </div>
+        <button id="tossBtn" type="button" class="btn btn-accent" disabled>🎲 Toss ghuma</button>
+      </div>
+
+      <p class="section-copy">Gully rule simple hai: pehle sikka bolega, phir teams niklegi.</p>
+
+      <div class="toss-layout">
+        <div class="coin-stage">
+          <div id="coin" class="coin" aria-hidden="true">?</div>
+          <p id="coinStatus" class="coin-status">Sikka abhi pocket me hai</p>
+        </div>
+
+        <div id="tossSummary" class="toss-summary">
+          <div class="placeholder-card">
+            <h3>Toss abhi pending hai</h3>
+            <p>Lineup aur team count set kar, phir sikka hawa me jayega.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="decisionButtons" class="decision-buttons"></div>
+      <p id="decisionSummary" class="decision-summary"></p>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 5</p>
+          <h2>Ab teams baant</h2>
+        </div>
+        <button id="generateBtn" type="button" class="btn btn-primary">Team baant de</button>
+      </div>
+
+      <p id="teamGateText" class="section-copy">Pehle toss nipta, phir random teams niklegi.</p>
+      <div id="teamsGrid" class="teams-grid"></div>
+      <button id="reshuffleBtn" type="button" class="btn btn-secondary btn-wide" disabled>🔄 Dobara hila de</button>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 6</p>
+          <h2>Kaun hai hero?</h2>
+        </div>
+        <button id="captainsBtn" type="button" class="btn btn-secondary" disabled>👑 Captain nikaal</button>
+      </div>
+      <p class="section-copy">Har team me ek banda captain banega. Kismat jiska, awaaz uski.</p>
+      <div id="captainsGrid" class="captains-grid"></div>
+    </section>
+
+    <section class="card section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 7</p>
+          <h2>Harne wale ka kaam</h2>
+        </div>
+        <button id="punishmentBtn" type="button" class="btn btn-secondary" disabled>😂 Saza nikaal</button>
+      </div>
+      <div id="punishmentCard" class="punishment-card">
+        <div class="placeholder-card">
+          <h3>Abhi se saza mat soch</h3>
+          <p>Match ka scene set ho jaaye, phir halka sa mazaak niklega.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section reset-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Step 8</p>
+          <h2>Naya scene</h2>
+        </div>
+      </div>
+      <p class="section-copy">Sab hata, fresh start kar, aur phir se mohalla hila.</p>
+      <button id="resetBtn" type="button" class="btn btn-ghost btn-wide">Sab reset kar</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
