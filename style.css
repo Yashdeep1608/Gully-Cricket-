@@ -58,6 +58,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100svh;
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--ink);
   background:
@@ -109,6 +110,7 @@ input {
 
 button {
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .app-shell {
@@ -116,7 +118,10 @@ button {
   z-index: 1;
   width: min(100% - 1.1rem, 800px);
   margin: 0 auto;
-  padding: 0.9rem 0 2.6rem;
+  padding:
+    calc(0.9rem + env(safe-area-inset-top, 0px))
+    0
+    calc(2.6rem + env(safe-area-inset-bottom, 0px));
 }
 
 .card {
@@ -467,6 +472,8 @@ input:focus-visible {
 }
 
 input {
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
   padding: 0.98rem 1rem;
   border-radius: 1rem;
@@ -518,6 +525,7 @@ input::placeholder {
 }
 
 .btn {
+  -webkit-tap-highlight-color: transparent;
   border: 0;
   border-radius: 1rem;
   padding: 0.92rem 1rem;

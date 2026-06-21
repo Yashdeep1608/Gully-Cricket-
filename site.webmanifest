@@ -1,0 +1,10 @@
+{
+  "name": "Gully Captain",
+  "short_name": "Gully Captain",
+  "description": "Browser-only gully match utility for toss, fair teams, captains, and punishments.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09131d",
+  "theme_color": "#102334"
+}
